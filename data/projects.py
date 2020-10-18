@@ -2,4 +2,4 @@
 from model.project import Project
 
 
-testdata = [Project(topic="test_topic", description="test_description")]
+testdata = [Project(name="test_name", description="test_description")]
