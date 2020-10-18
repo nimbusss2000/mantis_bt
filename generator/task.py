@@ -1,6 +1,5 @@
 
-
-from model.project import Project
+from model.task import Task
 import random
 import string
 import os.path
@@ -15,7 +14,7 @@ except getopt.GetoptError as err:
     sys.exit(2)
 
 n = 3
-f = 'data/projects.json'
+f = 'data/tasks.json'
 
 for o, a in opts:
     if o == '-n':
@@ -24,10 +23,10 @@ for o, a in opts:
         f = a
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters
+    symbols = string.ascii_letters + string.digits
     return prefix + ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-testdata = [Project(name=random_string('topic_', 10), description=random_string('description_', 8)) for i in range(n)]
+testdata = [Task(topic=random_string('topic_', 5), description=random_string('description_', 8)) for i in range(n)]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', f)
 with open(file, 'w') as ff:
